@@ -29,10 +29,8 @@ public class IndexInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        加载产品分类
         List<Types> typeList = typesService.getAllTypes();
         request.setAttribute("typeList", typeList);
-        //指定路径
         String uri = request.getRequestURI();
         if (uri.contains("index/cart") || uri.contains("index/my") || uri.contains("index/order")) {
             Object user = request.getSession().getAttribute("user");
@@ -41,7 +39,6 @@ public class IndexInterceptor extends HandlerInterceptorAdapter {
                 return false;
             }
         }
-        //默认放过
         return true;
     }
 

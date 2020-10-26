@@ -8,9 +8,6 @@ import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
-/**
- * 商品持久层
- */
 
 public interface GoodsDao {
 

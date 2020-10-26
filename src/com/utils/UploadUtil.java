@@ -8,10 +8,6 @@ import java.util.Objects;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * 上传工具类
- * spring mvn支持
- */
 public class UploadUtil {
 	
 

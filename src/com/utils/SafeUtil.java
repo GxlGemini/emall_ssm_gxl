@@ -11,7 +11,6 @@ public class SafeUtil {
 	
 	/**
 	 * md5加密字符串
-	 * @param str
 	 * @return
 	 */
 	public final static String md5(String str){
@@ -27,7 +26,6 @@ public class SafeUtil {
 	
 	/**
 	 * sha1加密字符串
-	 * @param str
 	 * @return
 	 */
 	public final static String sha1(String str){
@@ -41,11 +39,7 @@ public class SafeUtil {
 		return Base64Utils.encodeToString(messageDigest.digest());
 	}
 
-	/**
-	 * 使用特定加密范式加密
-	 * @param str
-	 * @return
-	 */
+
 	public final static String encode(String str){
 		return md5(sha1(md5(str)));
 	}

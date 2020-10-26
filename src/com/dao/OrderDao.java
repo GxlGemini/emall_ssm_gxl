@@ -18,8 +18,6 @@ import java.util.List;
  */
 
 public interface OrderDao {
-//    @Select("SELECT * from orders where user_id =#{userId}")
-//    List<Order> getOrder(int id);
 
     /**
      * 我的订单

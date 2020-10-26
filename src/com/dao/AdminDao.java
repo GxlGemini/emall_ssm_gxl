@@ -5,9 +5,6 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-/**
- * 管理员持久层
- */
 
 public interface AdminDao {
     /**

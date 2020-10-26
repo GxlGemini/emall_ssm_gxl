@@ -44,7 +44,6 @@ public interface UserDao {
      */
     @Update("update users set password = #{password} where id =#{id}")
     boolean updatePassword(User user);
-//后台
 
     /**
      * 查询所有用户 （分页）

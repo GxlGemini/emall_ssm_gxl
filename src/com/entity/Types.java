@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Types {
     private Integer id;
-    private String name;//名称
-    private Integer num;//排序号
+    private String name;
+    private Integer num;
 
     public Types(Integer id, String name, Integer num) {
         this.id = id;

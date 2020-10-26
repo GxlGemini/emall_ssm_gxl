@@ -46,10 +46,9 @@ public class AdminController {
     public String login(Admin admin, HttpSession session, HttpServletRequest request) {
         List<Admin> adminList = adminService.queryAll();
         for (Admin admin1 : adminList) {
-            if (admin1.getUsername().equals(admin.getUsername())) {//当存在这个用户
+            if (admin1.getUsername().equals(admin.getUsername())) {
                 if (admin1.getPassword().equals(SafeUtil.encode(admin.getPassword()))) {
                     session.setAttribute("admin", admin);
-//                    String msg = "欢迎进入后台管理，" + admin.getUsername();
                     request.setAttribute("msg", "恭喜你登录成功！");
                     return "/admin/index.jsp";
                 }
@@ -148,11 +147,11 @@ public class AdminController {
                            @RequestParam(required = false, defaultValue = "6") int size
     ) {
         List<Goods> goodList;
-        if (type == 0) {//查找所有
+        if (type == 0) {
             goodList = goodsService.getAllGoods(page, size);
             request.setAttribute("goodList", goodList);
             request.setAttribute("pageTool", PageHtmlUtils.getPageTool(request, goodsService.getListCount(), page, size));
-        } else {//查看今日推荐商品
+        } else {
             goodList = goodsService.getTypesToTopsGoods(type, page, size);
             request.setAttribute("goodList", goodList);
             request.setAttribute("pageTool", PageHtmlUtils.getPageTool(request, goodsService.getCountTops(type), page, size));
@@ -176,10 +175,8 @@ public class AdminController {
      */
     @PostMapping("/goodSave")
     public String goodSave(Goods goods, MultipartFile file) throws Exception {
-//        System.out.println("前台传来的goods:" + goods.toString());
         goods.setCover(UploadUtil.upload(file));
         System.out.println(goods.getCover());
-//        System.out.println("修改后的值：" + goods.toString());
         goodsService.addGood(goods);
         return "redirect:goodList";
     }
@@ -219,7 +216,6 @@ public class AdminController {
     public String goodEdit(int id, HttpServletRequest request) {
         Goods goods = goodsService.getGoodsById(id);
         request.setAttribute("good", goods);
-        //加载类目
         List<Types> types = typesService.getAllTypes();
         request.setAttribute("typeList", types);
         return "/admin/good_edit.jsp";
@@ -323,9 +319,7 @@ public class AdminController {
     @PostMapping("/userSave")
     public String userSave(User user, HttpServletRequest request) {
         User user1 = userService.queryUserByName(user.getUsername());
-        //先判断是否存在此用户
         if (user1 == null && Objects.isNull(user1)) {
-            //注册该用户并让密码加密
             String pwd = SafeUtil.encode(user.getPassword());
             user.setPassword(pwd);
             userService.add(user);
@@ -341,7 +335,6 @@ public class AdminController {
      */
     @RequestMapping("/userRe")
     public String userRe(int id, HttpServletRequest request) {
-        //加载当前用户信息
         User user = userService.queryPassword(id);
         request.setAttribute("user", user);
         return "/admin/user_reset.jsp";
@@ -364,7 +357,6 @@ public class AdminController {
      */
     @RequestMapping("/userEdit")
     public String userEdit(int id, HttpServletRequest request) {
-        //加载当前用户信息
         User user = userService.queryPassword(id);
         request.setAttribute("user", user);
         return "/admin/user_edit.jsp";

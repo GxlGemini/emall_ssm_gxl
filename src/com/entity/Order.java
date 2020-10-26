@@ -9,21 +9,13 @@ import java.util.List;
  * @date 2020
  */
 public class Order {
-    /**
-     * 订单状态   -未付款
-     */
+
     public static final int STATUS_UNPAY = 1;
-    /**
-     * 订单状态   -已付款
-     */
+
     public static final int STATUS_PAYED = 2;
-    /**
-     * 订单状态   -配送中
-     */
+
     public static final int STATUS_SEND = 3;
-    /**
-     * 订单状态   -已完成
-     */
+
     public static final int STATUS_FINISH = 4;
 
     private Integer id;

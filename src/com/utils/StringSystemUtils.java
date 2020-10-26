@@ -3,9 +3,6 @@ package com.utils;
 /**
  *  @author linxiaobai
  * @date 2020
-
-
- * @desc
  */
 public class StringSystemUtils {
     /**
